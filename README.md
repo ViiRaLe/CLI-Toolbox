@@ -23,7 +23,8 @@ Put this in the commandname.cmd file:
 cd /d \folder\to\the\compiled\sources
 java CLIToolbox %*
 ```
-
+*\folder\to\the\compiled\sources is the folder containing the CLIToolbox.class file.*
+<br><br>
 You can now call "*commandname*" from the CMD.
 <br><br>
 <br><br>
