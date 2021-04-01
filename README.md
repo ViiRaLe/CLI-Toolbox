@@ -8,7 +8,7 @@ Call the program in the CMD to show an help page showing the Toolbox available p
   
 ## Packages
 
-#### Operations
+#### Operations *("op help")*
 - Basic String concatenation python-like
 - Basics Math operations with integers and floats
 
