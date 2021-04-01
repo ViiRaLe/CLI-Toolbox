@@ -9,6 +9,16 @@ public class Operations
     //TBD
 
     String[] ops;
+    String title = "                                                     ▄▄                             \n" +
+            "  ▄▄█▀▀██▄                                     ██    ██                             \n" +
+            "▄██▀    ▀██▄                                   ██                                   \n" +
+            "██▀      ▀██████████▄  ▄▄█▀██▀███▄███ ▄█▀██▄ ██████▀███   ▄██▀██▄▀████████▄  ▄██▀███\n" +
+            "██        ██ ██   ▀██ ▄█▀   ██ ██▀ ▀▀██   ██   ██    ██  ██▀   ▀██ ██    ██  ██   ▀▀\n" +
+            "██▄      ▄██ ██    ██ ██▀▀▀▀▀▀ ██     ▄█████   ██    ██  ██     ██ ██    ██  ▀█████▄\n" +
+            "▀██▄    ▄██▀ ██   ▄██ ██▄    ▄ ██    ██   ██   ██    ██  ██▄   ▄██ ██    ██  █▄   ██\n" +
+            "  ▀▀████▀▀   ██████▀   ▀█████▀████▄  ▀████▀██▄ ▀████████▄ ▀█████▀▄████  ████▄██████▀\n" +
+            "             ██                                                                     \n" +
+            "           ▄████▄                                                                   \n";
 
     Operations(String[] ops)
     {
@@ -38,11 +48,11 @@ public class Operations
     //Display the Help page
     private String Help()
     {
-        String help = "The Operations package is a collection of String and Math operations.\nCurrent operations available:\n";
-        help += ("Print the repetition of a string X times:\n   \"op 'string'*X\"\n");
-        help += ("Print the result of a factorial operation:\n   \"op int!\"\n");
-        help += ("Print the result of a integer operation:\n   \"op int+-*/%?int\"\n");
-        help += ("Print the result of a float operation with X decimals as result:\n   \"op -fX int.int+-*/%?int.int\"\n");
+        String help = "\n\n" + title + "\n\nThe Operations package is a collection of String and Math operations.\n\nCurrent operations available:\n\n";
+        help += ("Print the repetition of a string X times:\n   \"op 'string'*X\"\n\n");
+        help += ("Print the result of a factorial operation:\n   \"op int!\"\n\n");
+        help += ("Print the result of a integer operation:\n   \"op int+-*/%?int\"\n\n");
+        help += ("Print the result of a float operation with X decimals as result:\n   \"op -fX int.int+-*/%?int.int\"\n\n");
 
         return help;
     }
