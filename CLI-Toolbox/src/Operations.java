@@ -24,8 +24,8 @@ public class Operations
             if (ops[1].equals("help")) return Help();
             else if (ops[1].matches("(\'(\\w+)\'\\*\\d+)")) return PrintOperation();
             else if (ops[1].matches("(\\d)+!")) return FactorialOperation();
-            else if (ops[1].matches("(\\d)+[\\+\\-\\*\\/\\%\\?](\\d)+")) return MathOperation(false);
-            else if (ops[1].matches("(\\-f\\d)") && ops[2].matches("(\\d+(.\\d+)?)[\\+\\-\\*\\/\\%\\?](\\d+(.\\d+)?)")) return MathOperation(true);
+            else if (ops[1].matches("(\\d)+[\\+\\-\\*\\/\\%\\?](\\d)+")) return MathOperation();
+            else if (ops[1].matches("(\\-f\\d)") && ops[2].matches("(\\d+(.\\d+)?)[\\+\\-\\*\\/\\%\\?](\\d+(.\\d+)?)")) return MathFloatOperation();
         }
         catch(IndexOutOfBoundsException e)
         {
@@ -48,111 +48,114 @@ public class Operations
     }
 
     //(\d)+[\+\-\*\/\^](\d)+
-    //(\-f\d)          (\d+(.\d+)?)[\+\-\*\/\^](\d+(.\d+)?)
     //Math operations
-    private String MathOperation(boolean floatOp)
+    private String MathOperation()
     {
         String result = "";
 
-        if (!floatOp)
+        String[] s = ops[1].split("[\\+\\-\\*\\/\\%\\?]");
+        String str = ops[1];
+        String extract = str.replaceAll("[^\\+\\-\\*\\/\\%\\?]+", "");
+        char op = extract.charAt(0);
+
+        int a = Integer.parseInt(s[0]);
+        int b = Integer.parseInt(s[1]);
+        int r = 0;
+
+        switch (op)
         {
-            String[] s = ops[1].split("[\\+\\-\\*\\/\\%\\?]");
-            String str = ops[1];
-            String extract = str.replaceAll("[^\\+\\-\\*\\/\\%\\?]+", "");
-            char op = extract.charAt(0);
+            case '+':
+                r = a+b;
+                break;
 
-            int a = Integer.parseInt(s[0]);
-            int b = Integer.parseInt(s[1]);
-            int r = 0;
+            case '-':
+                r = a-b;
+                break;
 
-            switch (op)
-            {
-                case '+':
-                    r = a+b;
-                    break;
+            case '*':
+                r = a*b;
+                break;
 
-                case '-':
-                    r = a-b;
-                    break;
+            case '/':
+                if (b == 0) return "Cannot divide by 0.";
+                r = a/b;
+                break;
 
-                case '*':
-                    r = a*b;
-                    break;
+            case '%':
+                r = a%b;
+                break;
 
-                case '/':
-                    if (b == 0) return "Cannot divide by 0.";
-                    r = a/b;
-                    break;
+            case '?':
+                r = (int)(Math.pow(a, b));
+                break;
 
-                case '%':
-                    r = a%b;
-                    break;
+            default:
+                System.out.println("FAIL");
+                break;
 
-                case '?':
-                    r = (int)(Math.pow(a, b));
-                    break;
-
-                default:
-                    System.out.println("FAIL");
-                    break;
-
-            }
-
-            result = "" + r;
         }
-        else
+
+        result = "" + r;
+
+        return result;
+    }
+
+    //(\-f\d)          (\d+(.\d+)?)[\+\-\*\/\^](\d+(.\d+)?)
+    //Math operations with float numbers
+    private String MathFloatOperation()
+    {
+        String result = "";
+
+        String[] s = ops[2].split("[\\+\\-\\*\\/\\%\\?]");
+        String str = ops[2];
+        String extract = str.replaceAll("[^\\+\\-\\*\\/\\%\\?]+", "");
+        char op = extract.charAt(0);
+
+        str = ops[1];
+        extract = str.replaceAll("[^\\d]+", "");
+        int decimals = Integer.parseInt(extract);
+
+        float a = Float.parseFloat(s[0]);
+        float b = Float.parseFloat(s[1]);
+        float r = 0f;
+
+        switch (op)
         {
-            String[] s = ops[2].split("[\\+\\-\\*\\/\\%\\?]");
-            String str = ops[2];
-            String extract = str.replaceAll("[^\\+\\-\\*\\/\\%\\?]+", "");
-            char op = extract.charAt(0);
+            case '+':
+                r = a+b;
+                break;
 
-            str = ops[1];
-            extract = str.replaceAll("[^\\d]+", "");
-            int decimals = Integer.parseInt(extract);
+            case '-':
+                r = a-b;
+                break;
 
-            float a = Float.parseFloat(s[0]);
-            float b = Float.parseFloat(s[1]);
-            float r = 0f;
+            case '*':
+                r = a*b;
+                break;
 
-            switch (op)
-            {
-                case '+':
-                    r = a+b;
-                    break;
+            case '/':
+                if (b == 0) return "Cannot divide by 0.";
+                r = a/b;
+                break;
 
-                case '-':
-                    r = a-b;
-                    break;
+            case '%':
+                r = a%b;
+                break;
 
-                case '*':
-                    r = a*b;
-                    break;
+            case '?':
+                r = (float)Math.pow(a, b);
+                break;
 
-                case '/':
-                    if (b == 0) return "Cannot divide by 0.";
-                    r = a/b;
-                    break;
+            default:
+                System.out.println("FAIL");
+                break;
 
-                case '%':
-                    r = a%b;
-                    break;
-
-                case '?':
-                    r = (float)Math.pow(a, b);
-                    break;
-
-                default:
-                    System.out.println("FAIL");
-                    break;
-
-            }
-
-            BigDecimal bd_num = new BigDecimal(Float.toString(r));
-            bd_num = bd_num.setScale(decimals, RoundingMode.DOWN);
-
-            result = "" + bd_num;
         }
+
+        BigDecimal bd_num = new BigDecimal(Float.toString(r));
+        bd_num = bd_num.setScale(decimals, RoundingMode.DOWN);
+
+        result = "" + bd_num;
 
         return result;
     }

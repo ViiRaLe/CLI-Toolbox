@@ -30,3 +30,8 @@ public class CLIToolbox
         }
     }
 }
+
+
+//Operations
+//Byte related (endianess, 32/64)
+//Numeric Systems
