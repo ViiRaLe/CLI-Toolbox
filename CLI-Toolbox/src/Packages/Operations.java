@@ -1,32 +1,36 @@
+package Packages;
+
+import Toolbox.CLIToolbox;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Operations
+public class Operations extends Package
 {
     //Gets args, parse them and execute the operations written.
     //Support basic math functions + float ops
     //Print python-like
     //TBD
 
-    String[] ops;
-    String title = "                                                     ▄▄                             \n" +
-            "  ▄▄█▀▀██▄                                     ██    ██                             \n" +
-            "▄██▀    ▀██▄                                   ██                                   \n" +
-            "██▀      ▀██████████▄  ▄▄█▀██▀███▄███ ▄█▀██▄ ██████▀███   ▄██▀██▄▀████████▄  ▄██▀███\n" +
-            "██        ██ ██   ▀██ ▄█▀   ██ ██▀ ▀▀██   ██   ██    ██  ██▀   ▀██ ██    ██  ██   ▀▀\n" +
-            "██▄      ▄██ ██    ██ ██▀▀▀▀▀▀ ██     ▄█████   ██    ██  ██     ██ ██    ██  ▀█████▄\n" +
-            "▀██▄    ▄██▀ ██   ▄██ ██▄    ▄ ██    ██   ██   ██    ██  ██▄   ▄██ ██    ██  █▄   ██\n" +
-            "  ▀▀████▀▀   ██████▀   ▀█████▀████▄  ▀████▀██▄ ▀████████▄ ▀█████▀▄████  ████▄██████▀\n" +
-            "             ██                                                                     \n" +
-            "           ▄████▄                                                                   \n";
-
-    Operations(String[] ops)
+    public Operations(String[] ops)
     {
-        if (ops == null || ops.length <= 1) System.out.println("Provide a math or print operation.\nType \"op help\" to display the man page.");
+        super();
+        if (ops == null || ops.length <= 1) System.out.println("Type \"op help\" to display the man page.");
         this.ops = ops;
+
+        title = "                                                     ▄▄                             \n" +
+                "  ▄▄█▀▀██▄                                     ██    ██                             \n" +
+                "▄██▀    ▀██▄                                   ██                                   \n" +
+                "██▀      ▀██████████▄  ▄▄█▀██▀███▄███ ▄█▀██▄ ██████▀███   ▄██▀██▄▀████████▄  ▄██▀███\n" +
+                "██        ██ ██   ▀██ ▄█▀   ██ ██▀ ▀▀██   ██   ██    ██  ██▀   ▀██ ██    ██  ██   ▀▀\n" +
+                "██▄      ▄██ ██    ██ ██▀▀▀▀▀▀ ██     ▄█████   ██    ██  ██     ██ ██    ██  ▀█████▄\n" +
+                "▀██▄    ▄██▀ ██   ▄██ ██▄    ▄ ██    ██   ██   ██    ██  ██▄   ▄██ ██    ██  █▄   ██\n" +
+                "  ▀▀████▀▀   ██████▀   ▀█████▀████▄  ▀████▀██▄ ▀████████▄ ▀█████▀▄████  ████▄██████▀\n" +
+                "             ██                                                                     \n" +
+                "           ▄████▄                                                                   \n";
     }
 
-    //Start the operations
+    @Override
     public String Operate()
     {
         try
@@ -45,14 +49,15 @@ public class Operations
         return "Error. Type \"op help\" to display the man page.";
     }
 
-    //Display the Help page
-    private String Help()
+    @Override
+    String Help()
     {
         String help = "\n\n" + title + "\n\nThe Operations package is a collection of String and Math operations.\n\nCurrent operations available:\n\n";
         help += ("Print the repetition of a string X times:\n   \"op 'string'*X\"\n\n");
         help += ("Print the result of a factorial operation:\n   \"op int!\"\n\n");
         help += ("Print the result of a integer operation:\n   \"op int+-*/%?int\"\n\n");
-        help += ("Print the result of a float operation with X decimals as result:\n   \"op -fX int.int+-*/%?int.int\"\n\n");
+        help += ("Print the result of a float operation with X decimals as result:\n   \"op -fX int.int+-*/%?int.int\"");
+        help+= CLIToolbox.copy;
 
         return help;
     }
