@@ -1,10 +1,8 @@
 # CLI-Toolbox
 CLI-Toolbox is a collection of packages for smart and fast operations via the command-line interface.
-<br>
-<br>
+<br><br>
 Call the program in the CLI to show an help page showing the Toolbox available packages with their basic functions and calls.
-<br>
-<br>
+<br><br>
 ## Packages
 
 #### Operations *("op help")*
