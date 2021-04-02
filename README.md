@@ -16,7 +16,8 @@ Call the program in the CLI to show an help page showing the Toolbox available p
 
 ## Usage
 You need the Java JDK / JRE installed to run this.<br>
-Save the jar file located in ~\CLI-Toolbox\CLI-Toolbox\out\artifacts\CLI_Toolbox_jar where you prefer.<br>
+Save the jar file located in ~\CLI-Toolbox\CLI-Toolbox\out\artifacts\CLI_Toolbox_jar where you prefer.<br><br>
+You can call the program via CLI by calling: "*java -jar path/to/jar/CLI-Toolbox.jar {arguments}*"
 
 ### Windows
 To call the program freely from the CMD, create a batch file (commandname.cmd) and put it in a folder in your PATH (the PATH Environment Variable).
