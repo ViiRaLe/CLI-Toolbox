@@ -24,8 +24,7 @@ To call the program freely from the CMD, create a batch file (commandname.cmd) a
 Put this in the commandname.cmd file:
 ```
 @echo off
-cd /d \path\to\jar
-java -jar CLI-Toolbox.jar %*
+java -jar \path\to\jar\CLI-Toolbox.jar %*
 ```
 *\path\to\jar is the path of the folder containing the CLI-Toolbox.jar file saved earlier.*
 <br><br>
