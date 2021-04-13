@@ -44,7 +44,7 @@ Now give executable privileges to the script via:
 ```
 chmod a+x /path/to/commandname
 ```
-*path/to/commandname is the path of the sctipt created earlier.*
+*path/to/commandname is the path of the script created earlier.*
 <br><br>
 You can now call "*commandname*" from the shell.
 
