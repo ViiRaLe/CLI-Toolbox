@@ -31,15 +31,19 @@ java -jar \path\to\jar\CLI-Toolbox.jar %*
 You can now call "*commandname*" from the CMD.
 
 ### *nix / MacOS
-To call the program freely from the shell, create a shell script (commandname.sh) and put it in a folder in your PATH (/usr/bin for example).
+To call the program freely from the shell, create a script (commandname) and put it in a folder in your PATH (/usr/local/bin for example).
 <br>
 <br>
-Put this in the commandname.sh script:
+Put this in the commandname script:
 ```
-#!/bin/sh
 java -jar path/to/jar/CLI-Toolbox.jar "$*"
 ```
 *path/to/jar/ is the path of the folder containing the CLI-Toolbox.jar file saved earlier.*
+<br><br>
+Run the command 
+```
+chmod a+x commandname
+```
 <br><br>
 You can now call "*commandname*" from the shell.
 
