@@ -36,14 +36,15 @@ To call the program freely from the shell, create a script (commandname) and put
 <br>
 Put this in the commandname script:
 ```
-java -jar path/to/jar/CLI-Toolbox.jar "$*"
+java -jar path/to/jar/CLI-Toolbox.jar "$@"
 ```
 *path/to/jar/ is the path of the folder containing the CLI-Toolbox.jar file saved earlier.*
 <br><br>
-Run the command 
+Now give executable privileges to the script via:
 ```
-chmod a+x commandname
+chmod a+x /path/to/commandname
 ```
+*path/to/commandname is the path of the sctipt created earlier.*
 <br><br>
 You can now call "*commandname*" from the shell.
 
